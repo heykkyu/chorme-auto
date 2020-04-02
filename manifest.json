@@ -3,7 +3,7 @@
   "name": "HEY_FIND_ITEM",
   "description": "HEY_FIND_ITEM",
   "version": "1.2.0",
-  "permissions": ["//www.costco.co.kr/"],
+  "permissions": ["https://www.costco.co.kr/"],
   "icons": {
     "96": "icon.png"
   },
@@ -12,7 +12,7 @@
       "all_frames": true,
       "js": ["content.js"],
       "css": ["content.css"],
-      "matches": ["//www.costco.co.kr/*"],
+      "matches": ["https://www.costco.co.kr/*"],
       "run_at": "document_end"
     }
   ],

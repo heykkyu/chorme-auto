@@ -9,10 +9,10 @@
     }
 
     const save = () => {
-        const botToken = document.getElementById('bot-token').value;
-        const chatId = document.getElementById('chat-id').value;
+        const botToken = document.getElementById('HEY_FIND_ITEM::bot-token').value;
+        const chatId = document.getElementById('HEY_FIND_ITEM::chat-id').value;
 
-        const msg = encodeURI('텔레그램 예약 알림이 연동되었습니다.');
+        const msg = encodeURI('코슷코 탐지기 알림이 연동되었습니다.');
         const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${msg}`;
 
         fetch(url).then(response => {
@@ -20,6 +20,7 @@
                 localStorage.setItem('HEY_FIND_ITEM::bot-token', botToken);
                 localStorage.setItem('HEY_FIND_ITEM::chat-id', chatId);
                 setMessage(MESSAGE_CONNECTION_SUCCESS);
+                on();
             } else {
                 setMessage(MESSAGE_CONNECTION_FAIL);
             }
@@ -30,14 +31,15 @@
     }
 
     const reset = () => {
-        document.getElementById('bot-token').value = '';
-        document.getElementById('chat-id').value = '';
+        document.getElementById('HEY_FIND_ITEM::bot-token').value = '';
+        document.getElementById('HEY_FIND_ITEM::chat-id').value = '';
         localStorage.removeItem('HEY_FIND_ITEM::bot-token');
         localStorage.removeItem('HEY_FIND_ITEM::chat-id');
         setMessage(MESSAGE_RESET);
     }
 
     const on = () => {
+        setMessage('시작되었습니다.');
         localStorage.setItem('HEY_FIND_ITEM::isStart', true);
     }
 
