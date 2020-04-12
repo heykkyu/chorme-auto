@@ -11,15 +11,13 @@
     {
       "all_frames": true,
       "js": ["content.js"],
-      "css": ["content.css"],
-      "matches": ["https://www.costco.co.kr/*"],
+      "matches": ["https://www.costco.co.kr/HealthSupplement/Home-Health-CareFirst-Aid/First-Aid/c/cos_12.7.2"],
       "run_at": "document_end"
     }
   ],
   "background": {
     "page": "background.html"
   },
-  "web_accessible_resources": ["inject.js", "assets/tada.mp3"],
   "browser_action": {
     "default_title": "telegram",
     "default_popup": "popup.html"

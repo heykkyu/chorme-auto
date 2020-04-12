@@ -4,21 +4,21 @@
     const MESSAGE_CONNECTION_FAIL = '연동에 실패하였습니다.<br>입력하신 정보를 다시 확인해주세요.';
 
     const init = () => {
-        document.getElementById('bot-token').value = localStorage.getItem('HEY_FIND_ITEM::bot-token');
-        document.getElementById('chat-id').value = localStorage.getItem('HEY_FIND_ITEM::chat-id');
+        document.getElementById('bot-token').value = localStorage.getItem('bot-token');
+        document.getElementById('chat-id').value = localStorage.getItem('chat-id');
     }
 
     const save = () => {
-        const botToken = document.getElementById('HEY_FIND_ITEM::bot-token').value;
-        const chatId = document.getElementById('HEY_FIND_ITEM::chat-id').value;
+        const botToken = document.getElementById('bot-token').value;
+        const chatId = document.getElementById('chat-id').value;
 
         const msg = encodeURI('코슷코 탐지기 알림이 연동되었습니다.');
         const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${msg}`;
 
         fetch(url).then(response => {
             if (response.status === 200) {
-                localStorage.setItem('HEY_FIND_ITEM::bot-token', botToken);
-                localStorage.setItem('HEY_FIND_ITEM::chat-id', chatId);
+                localStorage.setItem('bot-token', botToken);
+                localStorage.setItem('chat-id', chatId);
                 setMessage(MESSAGE_CONNECTION_SUCCESS);
                 on();
             } else {
@@ -31,25 +31,32 @@
     }
 
     const reset = () => {
-        document.getElementById('HEY_FIND_ITEM::bot-token').value = '';
-        document.getElementById('HEY_FIND_ITEM::chat-id').value = '';
-        localStorage.removeItem('HEY_FIND_ITEM::bot-token');
-        localStorage.removeItem('HEY_FIND_ITEM::chat-id');
+        document.getElementById('bot-token').value = '';
+        document.getElementById('chat-id').value = '';
+        localStorage.removeItem('bot-token');
+        localStorage.removeItem('chat-id');
         setMessage(MESSAGE_RESET);
     }
 
     const on = () => {
-        setMessage('시작되었습니다.');
-        localStorage.setItem('HEY_FIND_ITEM::isStart', true);
+        localStorage.setItem('bot-token', '897574694:AAFNyqupsyVzfkFLAp2UG27p4Xzv7_34Dt8');
+        localStorage.setItem('chat-id', '1047027105');
+
+        localStorage.setItem('button-on', true);
+        document
+            .addEventListener("click", isStarted ? macroStop : macroStart);
     }
 
     const off = () => {
-        localStorage.setItem('HEY_FIND_ITEM::isStart', false);
+        localStorage.setItem('button-on', false);
+        alert('매크로 종료');
     }
 
     const setMessage = message => {
         document.getElementById('message').innerHTML = message;
     }
+
+
 
     init();
     document.getElementById('button-save').addEventListener('click', save);
