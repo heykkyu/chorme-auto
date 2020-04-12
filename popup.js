@@ -39,12 +39,7 @@
     }
 
     const on = () => {
-        localStorage.setItem('bot-token', '897574694:AAFNyqupsyVzfkFLAp2UG27p4Xzv7_34Dt8');
-        localStorage.setItem('chat-id', '1047027105');
-
         localStorage.setItem('button-on', true);
-        document
-            .addEventListener("click", isStarted ? macroStop : macroStart);
     }
 
     const off = () => {
